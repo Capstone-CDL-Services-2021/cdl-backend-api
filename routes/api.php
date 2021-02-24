@@ -1,5 +1,8 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type, origin,Authorization");
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\HelloController;
@@ -16,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::get('hello',[HelloController::class, 'hello']);
 Route::post('login',[AuthController::class, 'login']);
 Route::post('register',[AuthController::class,'register']);

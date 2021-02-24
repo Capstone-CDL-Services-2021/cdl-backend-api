@@ -51,7 +51,11 @@ class AuthController extends Controller
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password'))
             ]);
-            return $user;
+            return response([
+                'message' => 'Registration successful',
+                'user' => $user
+            ]);
+
         }catch(\Exception $exception){
             return response([
                 'message' => $exception->getMessage()
