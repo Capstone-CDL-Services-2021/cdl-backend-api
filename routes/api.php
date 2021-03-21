@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ServiceCardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,4 @@ Route::post('reset',[ForgotController::class, 'reset']);
 Route::post('addServiceCard',[ServiceCardController::class,'addServiceCard']);
 Route::get('getAllServiceCards',[ServiceCardController::class,'getAllServiceCards']);
 Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
+Route::get('getUsers',[UserController::class, 'getUsers']);
