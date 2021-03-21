@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServiceCardRequest;
 use App\Models\ServiceCards;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceCardController extends Controller
 {
@@ -26,6 +27,20 @@ class ServiceCardController extends Controller
         }
     }
 
-
-
+    public function removeServiceCard($id){
+        try {
+            $serviceCard = ServiceCards::find($id);
+            $serviceCard->delete();
+            return response([
+                'message' => 'Service card Successfully Deleted'
+            ]);
+        }catch(\Exception $exception){
+            return response([
+                'message' => $exception->getMessage()
+            ],400);
+        }
+    }
+    public function getAllServiceCards(){
+        return ServiceCards::all();
+    }
 }
