@@ -1444,25 +1444,37 @@ SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,REFERENCES,INDEX,ALTER,CREATE TEMPORARY 
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="421" parent="347" name="created_at">
+    <column id="421" parent="347" name="admin">
       <Position>6</Position>
-      <DataType>timestamp|0s</DataType>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="422" parent="347" name="updated_at">
+    <column id="422" parent="347" name="blocked">
       <Position>7</Position>
+      <DataType>tinyint(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="423" parent="347" name="created_at">
+      <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="423" parent="347" name="users_email_unique">
+    <column id="424" parent="347" name="updated_at">
+      <Position>9</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <index id="425" parent="347" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="424" parent="347" name="PRIMARY">
+    <key id="426" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="425" parent="347" name="users_email_unique">
+    <key id="427" parent="347" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
