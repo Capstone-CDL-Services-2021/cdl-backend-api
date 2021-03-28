@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -10,7 +12,12 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function deleteUser(){
-        User::destroy();
+    public function resetPassword(Request $request){
+
     }
+
+    public function deleteUser(Request $request){
+        DB::table('users')->where('id', '=', $request->input('id'))->delete();
+    }
+
 }
