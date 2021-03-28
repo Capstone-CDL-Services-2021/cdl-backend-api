@@ -13,9 +13,9 @@ class EquipmentController extends Controller
             $equipment = Equipment::create([
                 'name' => $request->input('name'),
                 'cost' => $request->input('cost'),
-                'date rented' => $request->input('date rented'),
-                'date returned' => $request->input('date returned'),
-                'rented from' => $request->input('rented from'),
+                'date rented' => $request->input('dateRented'),
+                'date returned' => $request->input('dateReturned'),
+                'rented from' => $request->input('rentedFrom'),
             ]);
             return response([
                 'message' => 'Equipment added successfully',
