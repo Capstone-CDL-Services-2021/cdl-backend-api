@@ -12,12 +12,12 @@ class CreateEquipmentTable extends Migration
     {
         Schema::create('Equipment', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name') ;
             $table->string('owned');
-            $table->integer('cost');
-            $table->string('date_rented');
-            $table->string('date_returned');
-            $table->string('rented_from');
+            $table->integer('cost')->nullable();
+            $table->string('date_rented')->nullable();
+            $table->string('date_returned')->nullable();
+            $table->string('rented_from')->nullable();
             $table->timestamps();
         });
     }
