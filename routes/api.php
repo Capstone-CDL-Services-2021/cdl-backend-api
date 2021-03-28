@@ -4,6 +4,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, origin,Authorization");
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ServiceCardController;
@@ -32,3 +33,5 @@ Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
 Route::delete('removeServiceCard',[ServiceCardController::class,'removeServiceCard']);
 Route::post('addTestimonial', [TestimonialController::class, 'addTestimonial']);
 Route::post('getAllTestimonials', [TestimonialController::class, 'getAllTestimonials']);
+Route::post('addEquipment',[EquipmentController::class, 'addEquipment']);
+Route::post('getAllEquipment',[EquipmentController::class, 'getAllEquipment']);
