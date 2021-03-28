@@ -29,6 +29,4 @@ class ServiceCardController extends Controller
     public function getAllServiceCards(){
         return ServiceCards::all();
     }
-
-
 }

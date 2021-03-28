@@ -9,4 +9,8 @@ class UserController extends Controller
     public function getUsers(){
         return User::all();
     }
+
+    public function deleteUser(){
+        User::destroy();
+    }
 }
