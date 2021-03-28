@@ -13,10 +13,11 @@ class CreateEquipmentTable extends Migration
         Schema::create('Equipment', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('owned');
             $table->integer('cost');
-            $table->string('date rented');
-            $table->string('date returned');
-            $table->string('rented from');
+            $table->string('date_rented');
+            $table->string('date_returned');
+            $table->string('rented_from');
             $table->timestamps();
         });
     }

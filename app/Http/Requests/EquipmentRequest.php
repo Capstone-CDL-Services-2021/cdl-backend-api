@@ -25,6 +25,7 @@ class EquipmentRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'owned' => 'required'
         ];
     }
 }

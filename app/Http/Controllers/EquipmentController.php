@@ -12,10 +12,11 @@ class EquipmentController extends Controller
         try {
             $equipment = Equipment::create([
                 'name' => $request->input('name'),
+                'owned' => $request->input('owned'),
                 'cost' => $request->input('cost'),
-                'date rented' => $request->input('dateRented'),
-                'date returned' => $request->input('dateReturned'),
-                'rented from' => $request->input('rentedFrom'),
+                'date_rented' => $request->input('date_rented'),
+                'date_returned' => $request->input('date_returned'),
+                'rented_from' => $request->input('rented_from'),
             ]);
             return response([
                 'message' => 'Equipment added successfully',

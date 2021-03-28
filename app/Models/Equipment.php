@@ -18,10 +18,11 @@ class Equipment extends Model
      */
     protected $fillable = [
         'name',
+        'owned',
         'cost',
-        'date rented',
-        'date returned',
-        'rented from'
+        'date_rented',
+        'date_returned',
+        'rented_from'
     ];
 
 }
