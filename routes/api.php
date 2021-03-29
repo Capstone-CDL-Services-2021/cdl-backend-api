@@ -34,3 +34,4 @@ Route::get('getAllUsers',[UserController::class, 'getAllUsers']);
 Route::post('updateUserInfo', [UserController::class, 'updateUserInfo']);
 Route::post('resetPassword', [UserController::class, 'resetPassword']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
+Route::post('updateBlocked', [UserController::class, 'updateBlocked']);
