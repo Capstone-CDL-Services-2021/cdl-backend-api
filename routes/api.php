@@ -30,5 +30,5 @@ Route::get('getAllServiceCards',[ServiceCardController::class,'getAllServiceCard
 Route::post('addServiceCard',[ServiceCardController::class,'addServiceCard']);
 Route::post('removeServiceCard',[ServiceCardController::class,'removeServiceCard']);
 Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
-Route::get('getUsers',[UserController::class, 'getUsers']);
+Route::get('getAllUsers',[UserController::class, 'getAllUsers']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
