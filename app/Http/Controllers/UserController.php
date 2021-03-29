@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function getAllUsers(){
-        return User::all();
+    public function getAllUsers(): \Illuminate\Support\Collection
+    {
+//        return User::all();
+        return  DB::table('users')
+            ->where('admin', '=', '0')
+            ->get();
+    }
+
+    public function updateUserInfo(Request $request){
+
     }
 
     public function resetPassword(Request $request){
