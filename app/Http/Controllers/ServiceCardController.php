@@ -28,7 +28,9 @@ class ServiceCardController extends Controller
     }
 
     public function removeServiceCard(Request $request){
-            DB::table('service_cards')->where('id', '=', $request->input('cardID'))->delete();
+            DB::table('service_cards')
+                ->where('id', '=', $request->input('cardID'))
+                ->delete();
     }
 
     public function getAllServiceCards(){
