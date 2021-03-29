@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ServiceCardRequest;
 use App\Models\ServiceCards;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,7 @@ class ServiceCardController extends Controller
                 'message' => 'Service card added successfully',
                 'serviceCard' => $serviceCard
             ]);
-        }catch(\Exception $exception){
+        }catch(Exception $exception){
             return response([
                 'message' => $exception->getMessage()
             ],400);
