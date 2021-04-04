@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('admin')->default('0')->nullable();
+            $table->tinyInteger('blocked')->default('0')->nullable();
             $table->timestamps();
         });
     }
