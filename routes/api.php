@@ -8,6 +8,7 @@ use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ServiceCardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,6 @@ Route::post('updateUserInfo', [UserController::class, 'updateUserInfo']);
 Route::post('resetPassword', [UserController::class, 'resetPassword']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
 Route::post('updateBlocked', [UserController::class, 'updateBlocked']);
+Route::get('getUsers',[UserController::class, 'getUsers']);
+Route::get('order',[AuthController::class,'order'])->middleware('auth:api');
+Route::get('getOrder',[OrderController::class, 'getOrder']);
