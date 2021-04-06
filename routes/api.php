@@ -31,7 +31,7 @@ Route::post('reset',[ForgotController::class, 'reset']);
 Route::post('addServiceCard',[ServiceCardController::class,'addServiceCard']);
 Route::get('getAllServiceCards',[ServiceCardController::class,'getAllServiceCards']);
 Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
-Route::delete('removeServiceCard',[ServiceCardController::class,'removeServiceCard']);
+Route::post('removeServiceCard',[ServiceCardController::class,'removeServiceCard']);
 Route::post('addTestimonial', [TestimonialController::class, 'addTestimonial']);
 Route::post('getAllTestimonials', [TestimonialController::class, 'getAllTestimonials']);
 Route::post('addEquipment',[EquipmentController::class, 'addEquipment']);
