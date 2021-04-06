@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TestimonialRequest;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TestimonialController extends Controller
 {
@@ -29,5 +30,16 @@ class TestimonialController extends Controller
 
     public function getAllTestimonials(){
         return Testimonial::all();
+    }
+
+    public function toggleVisibility(Request $request){
+        $toggle = 0;
+        if($request->input('toggleID') === 0)
+        {
+            $toggle = 1;
+        }
+        DB::table('testimonials')
+            ->where('id', '=', $request->input('cardID'))
+            ->update(['toggle' => $toggle]);
     }
 }
