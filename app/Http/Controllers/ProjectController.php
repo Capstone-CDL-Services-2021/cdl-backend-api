@@ -32,14 +32,29 @@ class ProjectController extends Controller
     }
 
     public function getAllProjects(){
-        return Project::all();
+        return DB::table('projects')
+            ->select('*')
+            ->orderBy('Date_Requested')
+            ->get();
     }
 
+    public function deleteProject(Request $request){
+        DB::table('projects')
+            ->where('id', '=', $request->input('id'))
+            ->delete();
+    }
+
+    public function alterComplete(Request $request) {
+        return DB::table('projects')
+            ->where('id', '=', $request->input('id'))
+            ->update(['Completed' => 1]);
+    }
     public function getUpcomingProjects(){
         $CurrDate = Carbon::today();
         return DB::table('projects')
             ->select('Type_Of_Service','Date_Requested', 'Customer_Address')
             ->where('Date_Requested','>=',$CurrDate)
+            ->orderBy('Date_Requested')
             ->get();
     }
 }

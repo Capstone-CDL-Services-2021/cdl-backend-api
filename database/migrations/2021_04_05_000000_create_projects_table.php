@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->string('Customer_Email') ;
             $table->string('Customer_Address');
             $table->date('Date_Requested') ;
-            $table->tinyInteger('Completed');
+            $table->string('Completed');
             $table->timestamps();
         });
     }
