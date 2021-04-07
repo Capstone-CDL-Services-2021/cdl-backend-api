@@ -49,3 +49,4 @@ Route::post('getAllProjects',[ProjectController::class, 'getAllProjects']);
 Route::post('getUpcomingProjects',[ProjectController::class, 'getUpcomingProjects']);
 Route::post('alterComplete',[ProjectController::class, 'alterComplete']);
 Route::post('deleteProject',[ProjectController::class, 'deleteProject']);
+Route::post('printProjects',[ProjectController::class, 'printProjects']);

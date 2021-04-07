@@ -57,4 +57,12 @@ class ProjectController extends Controller
             ->orderBy('Date_Requested')
             ->get();
     }
+
+    public function printProjects(Request $request) {
+        return DB::table('projects')
+            ->select('*')
+            ->where('Customer_Email','=', $request->input('project.Customer_Email'))
+            ->get();
+
+    }
 }
