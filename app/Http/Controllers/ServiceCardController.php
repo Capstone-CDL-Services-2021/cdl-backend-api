@@ -34,6 +34,14 @@ class ServiceCardController extends Controller
                 ->delete();
     }
 
+    public function editServiceCard(Request $request){
+        DB::table('service_cards')
+            ->where('id', '=', $request->input('cardID'))
+            ->update([
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'imageUrl' => $request->input('imageUrl')]);
+    }
     public function getAllServiceCards(){
         return ServiceCards::all();
     }

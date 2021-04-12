@@ -9,7 +9,7 @@ class CreateServiceCardsTable extends Migration
 
     public function up()
     {
-        Schema::create('ServiceCards', function (Blueprint $table) {
+        Schema::create('service_cards', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('description');
@@ -19,6 +19,6 @@ class CreateServiceCardsTable extends Migration
     }
 
     public function down(){
-        Schema::drop('ServiceCards');
+        Schema::drop('service_cards');
     }
 }

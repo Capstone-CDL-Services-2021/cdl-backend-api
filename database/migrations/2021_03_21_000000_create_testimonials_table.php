@@ -16,6 +16,7 @@ class CreateTestimonialsTable extends Migration
             $table->string('testimonial');
             $table->integer('rating');
             $table->string('name');
+            $table->tinyInteger('toggle')->default('0')->nullable();
             $table->timestamps();
         });
     }
