@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('Completed');
             $table->integer('total_cost');
             $table->date('date_completed');
+            $table->string('invoice_paid');
             $table->timestamps();
         });
     }
