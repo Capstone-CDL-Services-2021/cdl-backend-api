@@ -42,3 +42,4 @@ Route::post('resetPassword', [UserController::class, 'resetPassword']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
 Route::post('updateBlocked', [UserController::class, 'updateBlocked']);
 Route::post('toggleVisibility', [TestimonialController::class, 'toggleVisibility']);
+Route::post('editServiceCard', [ServiceCardController::class, 'editServiceCard']);
