@@ -66,44 +66,10 @@ class ProjectController extends Controller
 
     public function printProjects(Request $request)
     {
-//        return DB::table('projects')
-//            ->join('users', 'users.email', '=', 'projects.Customer_Email')
-//            ->select('projects.*')
-//            ->where('projects.Customer_Email', '=', $request->input('user.email'))
-//            ->get();
-
-//        return DB::table('projects')
-//            ->select('*')
-//            ->join('users', function ($join) {
-//                $join->on('projects.Customer_Email', '=', 'users.email')
-//                    ->where('projects.Customer_Email', '=', 'users.email');
-//            })
-//            ->get();
-
-//         DB::table('projects')
-//            ->join('users','users.email','=','projects.Customer_Email')
-//            ->select('projects.*')
-//            ->where('projects.Customer_Email','=', $request->input('user.email'))
-//            ->orderBy('id')
-//            ->get();
-
-//        return DB::table('projects')
-//            ->join('user', function ($join) {
-//                $join->on('users.email', '=', 'projects.Customer_Email')
-//                    ->where('projects.Customer_Email', '=', 'user.email');
-//            })
-//            ->get();
-
-//        return DB::table('projects')
-//            ->select('*')
-//            ->orderBy('id')
-//            ->where('Customer_Email', '=', $request->input('user.email', 'jimmy@test'))
-//            ->get();
-
         return DB::table('projects')
             ->select('*')
             ->orderBy('id')
-            ->where('Customer_Email', '=', $request->old('user.email'))
+            ->where('Customer_Email', '=', $request->input('email'))
             ->get();
     }
 }
