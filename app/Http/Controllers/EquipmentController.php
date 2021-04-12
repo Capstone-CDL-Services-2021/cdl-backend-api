@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EquipmentRequest;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EquipmentController extends Controller
 {
@@ -27,6 +28,12 @@ class EquipmentController extends Controller
                 'message' => $exception->getMessage()
             ], 400);
         }
+    }
+
+    public function deleteEquipment(Request $request){
+        DB::table('equipment')
+            ->where('id', '=', $request->input('id'))
+            ->delete();
     }
 
     public function getAllEquipment(){
