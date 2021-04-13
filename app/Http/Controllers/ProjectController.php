@@ -6,7 +6,9 @@ use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProjectController extends Controller
 {
@@ -20,6 +22,10 @@ class ProjectController extends Controller
                 'Customer_Address' => $request->input('Customer_Address'),
                 'Date_Requested' => $request->input('Date_Requested'),
                 'Completed' => $request->input('Completed'),
+                'total_cost' => $request->input('total_cost'),
+                'date_completed' => $request->input('date_completed'),
+                'invoice_paid' => $request->input('invoice_paid'),
+
             ]);
             return response([
                 'message' => 'Project added successfully',
@@ -71,5 +77,36 @@ class ProjectController extends Controller
             ->orderBy('id')
             ->where('Customer_Email', '=', $request->input('email'))
             ->get();
+    }
+
+    public function sendInvoice(Request $request){
+        try{
+            $email = $request->input('email');
+            $invoice_num = $request->input('invoice_number');
+            $billTo = $request->input('bill_to');
+            $service_cost = $request->input('service_cost');
+            $due_date = $request->input('due_date');
+            $issue_date = $request->input('issue_date');
+            $service_offered = $request->input('service_offered');
+
+            Mail::send('Mails.sendInvoice',[
+                'invoice_num' => $invoice_num,
+                'bill_to' => $billTo,
+                'service_cost' => $service_cost,
+                'due_date' => $due_date,
+                'issue_date' => $issue_date,
+                'service_offered' => $service_offered
+
+            ],function (Message $message) use ($email){
+                $message->to($email);
+                $message->subject('CDL Services Invoice');
+            });return response([
+                'message' => 'Email sent'
+            ]);
+        } catch (\Exception $exception) {
+            return response([
+                'message' => $exception->getMessage()
+            ], 400);
+        }
     }
 }

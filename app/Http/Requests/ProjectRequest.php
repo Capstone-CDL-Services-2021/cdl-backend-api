@@ -29,7 +29,10 @@ class ProjectRequest extends FormRequest
             'Customer_Email' => 'required',
             'Customer_Address' => 'required',
             'Date_Requested' => 'required',
-            'Completed' => 'required'
+            'Completed' => 'required',
+            'total_cost' => 'required',
+            'date_completed' => 'required',
+            'invoice_paid' => 'required'
         ];
     }
 }

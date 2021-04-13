@@ -22,7 +22,11 @@ class Project extends Model
         'Customer_Email',
         'Customer_Address',
         'Date_Requested',
-        'Completed'
+        'Completed',
+        'total_cost',
+        'date_completed',
+        'invoice_paid'
+
     ];
 
 }
