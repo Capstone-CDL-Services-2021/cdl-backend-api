@@ -95,12 +95,13 @@ class ProjectController extends Controller
                 'service_cost' => $service_cost,
                 'due_date' => $due_date,
                 'issue_date' => $issue_date,
-                'service_offered' => $service_offered
-
+                'service_offered' => $service_offered,
+                'email' => $email
             ],function (Message $message) use ($email){
                 $message->to($email);
                 $message->subject('CDL Services Invoice');
-            });return response([
+            });
+            return response([
                 'message' => 'Email sent'
             ]);
         } catch (\Exception $exception) {
