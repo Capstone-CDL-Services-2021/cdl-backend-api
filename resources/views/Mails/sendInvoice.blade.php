@@ -4,5 +4,6 @@ Invoice Number: {{$invoice_num}} <br>
 Billed To: {{$bill_to}} <br>
 Service Offered: {{$service_offered}} <br>
 Date Issued: {{$issue_date}} <br>
-Due Date: {{$due_date}} <br>
-Cost of Service: ${{$service_cost}}
+Cost of Service: ${{$service_cost}} <br>
+
+<b>Payment due within 7 days</b>
