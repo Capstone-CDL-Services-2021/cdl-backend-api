@@ -85,7 +85,6 @@ class ProjectController extends Controller
             $invoice_num = $request->input('invoice_number');
             $billTo = $request->input('bill_to');
             $service_cost = $request->input('service_cost');
-            $due_date = $request->input('due_date');
             $issue_date = $request->input('issue_date');
             $service_offered = $request->input('service_offered');
 
@@ -93,14 +92,14 @@ class ProjectController extends Controller
                 'invoice_num' => $invoice_num,
                 'bill_to' => $billTo,
                 'service_cost' => $service_cost,
-                'due_date' => $due_date,
                 'issue_date' => $issue_date,
-                'service_offered' => $service_offered
-
+                'service_offered' => $service_offered,
+                'email' => $email
             ],function (Message $message) use ($email){
                 $message->to($email);
                 $message->subject('CDL Services Invoice');
-            });return response([
+            });
+            return response([
                 'message' => 'Email sent'
             ]);
         } catch (\Exception $exception) {
