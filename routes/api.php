@@ -28,34 +28,49 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('hello',[HelloController::class, 'hello']);
+//authenticate controller
 Route::post('login',[AuthController::class, 'login']);
 Route::post('register',[AuthController::class,'register']);
+Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
+//forgot controller
 Route::post('forgot',[ForgotController::class, 'forgot']);
 Route::post('reset',[ForgotController::class, 'reset']);
+
+//service card controller
 Route::get('getAllServiceCards',[ServiceCardController::class,'getAllServiceCards']);
 Route::post('addServiceCard',[ServiceCardController::class,'addServiceCard']);
 Route::post('removeServiceCard',[ServiceCardController::class,'removeServiceCard']);
+Route::post('editServiceCard', [ServiceCardController::class, 'editServiceCard']);
+
+//testimonial controller
 Route::post('addTestimonial', [TestimonialController::class, 'addTestimonial']);
 Route::post('getAllTestimonials', [TestimonialController::class, 'getAllTestimonials']);
+Route::post('toggleVisibility', [TestimonialController::class, 'toggleVisibility']);
+
+//equipment controller
 Route::post('addEquipment',[EquipmentController::class, 'addEquipment']);
 Route::post('getAllEquipment',[EquipmentController::class, 'getAllEquipment']);
 Route::post('deleteEquipment',[EquipmentController::class, 'deleteEquipment']);
-Route::get('user',[AuthController::class,'user'])->middleware('auth:api');
+
+//user controller
 Route::get('getAllUsers',[UserController::class, 'getAllUsers']);
 Route::post('updateUserInfo', [UserController::class, 'updateUserInfo']);
 Route::post('resetPassword', [UserController::class, 'resetPassword']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
 Route::post('toggleBlocked', [UserController::class, 'toggleBlocked']);
-Route::get('order',[AuthController::class,'order'])->middleware('auth:api');
-Route::get('getOrder',[OrderController::class, 'getOrder']);
+
+//project controller
 Route::post('addProject',[ProjectController::class, 'addProject']);
 Route::post('getAllProjects',[ProjectController::class, 'getAllProjects']);
 Route::post('getUpcomingProjects',[ProjectController::class, 'getUpcomingProjects']);
 Route::post('alterComplete',[ProjectController::class, 'alterComplete']);
 Route::post('deleteProject',[ProjectController::class, 'deleteProject']);
-Route::post('toggleVisibility', [TestimonialController::class, 'toggleVisibility']);
-Route::post('editServiceCard', [ServiceCardController::class, 'editServiceCard']);
-Route::post('bookService',[BookingServiceController::class, 'bookService']);
-Route::post('contactUs',[ContactUsController::class,'contactUs']);
+Route::post('printProjects',[ProjectController::class, 'printProjects']);
 Route::post('sendInvoice',[ProjectController::class,'sendInvoice']);
+
+//booking service controller
+Route::post('bookService',[BookingServiceController::class, 'bookService']);
+
+//contact us controller
+Route::post('contactUs',[ContactUsController::class,'contactUs']);
+
