@@ -56,3 +56,5 @@ Route::post('alterComplete',[ProjectController::class, 'alterComplete']);
 Route::post('deleteProject',[ProjectController::class, 'deleteProject']);
 Route::post('toggleVisibility', [TestimonialController::class, 'toggleVisibility']);
 Route::post('editServiceCard', [ServiceCardController::class, 'editServiceCard']);
+Route::post('bookService', [BookingServiceController::class, 'bookService']);
+Route::post('contactUs', [ContactUsController::class, 'contactUs']);
