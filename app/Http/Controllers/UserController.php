@@ -11,7 +11,7 @@ class UserController extends Controller
     public function getAllUsers(): Collection {
 //        Other method
 //        return User::all();
-
+        
         return  DB::table('users')
             ->where('admin', '=', '0')
             ->get();
