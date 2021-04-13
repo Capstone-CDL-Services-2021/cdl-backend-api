@@ -15,8 +15,8 @@ class CreateEquipmentTable extends Migration
             $table->string('name') ;
             $table->string('owned');
             $table->integer('cost')->nullable();
-            $table->string('date_rented')->nullable();
-            $table->string('date_returned')->nullable();
+            $table->date('date_rented')->nullable();
+            $table->date('date_returned')->nullable();
             $table->string('rented_from')->nullable();
             $table->timestamps();
         });

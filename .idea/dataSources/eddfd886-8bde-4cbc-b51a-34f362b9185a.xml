@@ -968,11 +968,11 @@ SELECT|sys.sys_config
     </column>
     <column id="301" parent="283" name="date_rented">
       <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>date|0s</DataType>
     </column>
     <column id="302" parent="283" name="date_returned">
       <Position>6</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>date|0s</DataType>
     </column>
     <column id="303" parent="283" name="rented_from">
       <Position>7</Position>
