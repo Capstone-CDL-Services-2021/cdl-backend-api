@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function getAllUsers(): Collection {
-//        Other method
-//        return User::all();
-
         return  DB::table('users')
             ->where('admin', '=', '0')
             ->get();
@@ -28,9 +25,6 @@ class UserController extends Controller
     }
 
     public function deleteUser(Request $request){
-//        Other method
-//        User::destroy($request->input('id'));
-
         DB::table('users')
             ->where('id', '=', $request->input('id'))
             ->delete();
