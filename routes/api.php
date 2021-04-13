@@ -4,6 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, origin,Authorization");
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingServiceController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\HelloController;
@@ -14,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +55,5 @@ Route::post('getUpcomingProjects',[ProjectController::class, 'getUpcomingProject
 Route::post('alterComplete',[ProjectController::class, 'alterComplete']);
 Route::post('deleteProject',[ProjectController::class, 'deleteProject']);
 Route::post('printProjects',[ProjectController::class, 'printProjects']);
+Route::post('bookService',[BookingServiceController::class, 'bookService']);
+Route::post('contactUs',[ContactUsController::class,'contactUs']);
