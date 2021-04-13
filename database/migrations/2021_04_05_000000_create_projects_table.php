@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('Customer_Address');
             $table->date('Date_Requested') ;
             $table->string('Completed');
-            $table->integer('total_cost')->nullable();
+            $table->decimal('total_cost')->nullable();
             $table->date('date_completed')->nullable();
             $table->string('invoice_paid')->nullable();
             $table->timestamps();
