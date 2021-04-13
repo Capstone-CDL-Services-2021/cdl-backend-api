@@ -11,7 +11,7 @@ class UserController extends Controller
     public function getAllUsers(): Collection {
 //        Other method
 //        return User::all();
-        
+
         return  DB::table('users')
             ->where('admin', '=', '0')
             ->get();
@@ -34,8 +34,6 @@ class UserController extends Controller
         DB::table('users')
             ->where('id', '=', $request->input('id'))
             ->delete();
-        DB::table('users')
-            ->truncate();
     }
 
     public function updateBlocked(Request $request){
