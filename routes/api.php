@@ -43,7 +43,7 @@ Route::get('getAllUsers',[UserController::class, 'getAllUsers']);
 Route::post('updateUserInfo', [UserController::class, 'updateUserInfo']);
 Route::post('resetPassword', [UserController::class, 'resetPassword']);
 Route::post('deleteUser', [UserController::class, 'deleteUser']);
-Route::post('updateBlocked', [UserController::class, 'updateBlocked']);
+Route::post('toggleBlocked', [UserController::class, 'toggleBlocked']);
 Route::get('order',[AuthController::class,'order'])->middleware('auth:api');
 Route::get('getOrder',[OrderController::class, 'getOrder']);
 Route::post('addProject',[ProjectController::class, 'addProject']);
