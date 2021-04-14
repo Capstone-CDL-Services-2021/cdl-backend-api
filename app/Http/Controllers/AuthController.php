@@ -7,6 +7,7 @@ use App\Models\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -17,13 +18,13 @@ class AuthController extends Controller
         try {
             if (Auth::attempt($request->only('email', 'password'))) {
                 /** @var User $user */
-                $user = Auth::user();
-                $token = $user->createToken('app')->accessToken;
-                return response([
-                    'message' => 'success',
-                    'token' => $token,
-                    'user' => $user
-                ]);
+                    $user = Auth::user();
+                    $token = $user->createToken('app')->accessToken;
+                    return response([
+                        'message' => 'success',
+                        'token' => $token,
+                        'user' => $user
+                    ]);
             }
         } catch (\Exception $exception) {
             return response([
@@ -59,7 +60,7 @@ class AuthController extends Controller
         }catch(\Exception $exception){
             return response([
                 'message' => $exception->getMessage()
-                ], 400);
+            ], 400);
         }
     }
 }
