@@ -64,6 +64,7 @@ Route::post('addProject',[ProjectController::class, 'addProject']);
 Route::post('getAllProjects',[ProjectController::class, 'getAllProjects']);
 Route::post('getUpcomingProjects',[ProjectController::class, 'getUpcomingProjects']);
 Route::post('alterComplete',[ProjectController::class, 'alterComplete']);
+Route::post('alterInvoiceStatus',[ProjectController::class, 'alterInvoiceStatus']);
 Route::post('deleteProject',[ProjectController::class, 'deleteProject']);
 Route::post('printProjects',[ProjectController::class, 'printProjects']);
 Route::post('sendInvoice',[ProjectController::class,'sendInvoice']);

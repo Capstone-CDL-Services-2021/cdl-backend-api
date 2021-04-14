@@ -60,6 +60,13 @@ class ProjectController extends Controller
             ->update(['Completed' => 1]);
     }
 
+    public function alterInvoiceStatus(Request $request)
+    {
+        return DB::table('projects')
+            ->where('id', '=', $request->input('id'))
+            ->update(['invoice_paid' => 1]);
+    }
+
     public function getUpcomingProjects()
     {
         $CurrDate = Carbon::today();
