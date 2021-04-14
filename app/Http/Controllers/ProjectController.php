@@ -94,6 +94,8 @@ class ProjectController extends Controller
             $service_cost = $request->input('service_cost');
             $issue_date = $request->input('issue_date');
             $service_offered = $request->input('service_offered');
+            $due_date = $request->input('due_date');
+
 
             Mail::send('Mails.sendInvoice',[
                 'invoice_num' => $invoice_num,
@@ -101,7 +103,10 @@ class ProjectController extends Controller
                 'service_cost' => $service_cost,
                 'issue_date' => $issue_date,
                 'service_offered' => $service_offered,
-                'email' => $email
+                'email' => $email,
+                'due_date' => $due_date,
+
+
             ],function (Message $message) use ($email){
                 $message->to($email);
                 $message->subject('CDL Services Invoice');
