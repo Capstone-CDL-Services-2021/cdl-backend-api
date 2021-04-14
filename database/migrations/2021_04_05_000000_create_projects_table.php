@@ -17,10 +17,10 @@ class CreateProjectsTable extends Migration
             $table->string('Customer_Email') ;
             $table->string('Customer_Address');
             $table->date('Date_Requested') ;
-            $table->string('Completed');
+            $table->string('Completed')->nullable()->default(0);
             $table->decimal('total_cost')->nullable();
             $table->date('date_completed')->nullable();
-            $table->string('invoice_paid')->nullable();
+            $table->string('invoice_paid')->nullable()->default(0);
             $table->timestamps();
         });
     }
