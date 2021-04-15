@@ -10,8 +10,19 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class ProjectController
+ * Handles requests for creation,deletion,and editing of projects
+ * @package App\Http\Controllers
+ */
 class ProjectController extends Controller
 {
+    /**
+     * This method is used to add a new project into our projects table
+     * @param ProjectRequest $request takes in the type of service, customer name, customer email
+     *      customer address, date requested, if project is completed, the total cost, date completed and if the invoice is paid
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response message that project added successfully if request is valid
+     */
     public function addProject(ProjectRequest $request)
     {
         try {
@@ -38,6 +49,10 @@ class ProjectController extends Controller
         }
     }
 
+    /**
+     * Method is used to retrieve all the projects
+     * @return \Illuminate\Support\Collection an array with all the projects sorted by the date requested
+     */
     public function getAllProjects()
     {
         return DB::table('projects')
@@ -46,6 +61,10 @@ class ProjectController extends Controller
             ->get();
     }
 
+    /**
+     * Method is used to delete the selected project
+     * @param Request $request takes in the request with the values for the project ID
+     */
     public function deleteProject(Request $request)
     {
         DB::table('projects')
@@ -53,6 +72,11 @@ class ProjectController extends Controller
             ->delete();
     }
 
+    /**
+     * Method is used to alter the completion status for a project in the database
+     * @param Request $request takes in the ID for the project
+     * @return int switches completed to 1 in the database
+     */
     public function alterComplete(Request $request)
     {
         return DB::table('projects')
@@ -60,6 +84,11 @@ class ProjectController extends Controller
             ->update(['Completed' => 1]);
     }
 
+    /**
+     * This method is used to alter the invoice status from payment pending to payment received in our database
+     * @param Request $request takes in the request with the ID of the project to be altered
+     * @return int changed to 1 for status of invoice paid
+     */
     public function alterInvoiceStatus(Request $request)
     {
         return DB::table('projects')
@@ -67,6 +96,10 @@ class ProjectController extends Controller
             ->update(['invoice_paid' => 1]);
     }
 
+    /**
+     * Method used to retrieve all the projects in the database where the date they were requested is greater than the current date
+     * @return \Illuminate\Support\Collection an array with the upcoming projects from the database
+     */
     public function getUpcomingProjects()
     {
         $CurrDate = Carbon::today();
@@ -77,6 +110,11 @@ class ProjectController extends Controller
             ->get();
     }
 
+    /**
+     * Method used to print all the projects that match the customer's email
+     * @param Request $request takes in the request with the customer email as the value
+     * @return \Illuminate\Support\Collection an array with the resulting projects that match the request
+     */
     public function printProjects(Request $request)
     {
         return DB::table('projects')
@@ -86,8 +124,15 @@ class ProjectController extends Controller
             ->get();
     }
 
-    public function sendInvoice(Request $request){
-        try{
+    /**
+     * Method used to send an email with the invoice contents
+     * @param Request $request takes in the request with email, invoice_number, customer name to bill to, the service cost
+     *      date issued, due date of invoice and the service that was offered
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response a response that the email has been sent if the request was valid
+     */
+    public function sendInvoice(Request $request)
+    {
+        try {
             $email = $request->input('email');
             $invoice_num = $request->input('invoice_number');
             $billTo = $request->input('bill_to');
@@ -97,7 +142,7 @@ class ProjectController extends Controller
             $due_date = $request->input('due_date');
 
 
-            Mail::send('Mails.sendInvoice',[
+            Mail::send('Mails.sendInvoice', [
                 'invoice_num' => $invoice_num,
                 'bill_to' => $billTo,
                 'service_cost' => $service_cost,
@@ -107,7 +152,7 @@ class ProjectController extends Controller
                 'due_date' => $due_date,
 
 
-            ],function (Message $message) use ($email){
+            ], function (Message $message) use ($email) {
                 $message->to($email);
                 $message->subject('CDL Services Invoice');
             });

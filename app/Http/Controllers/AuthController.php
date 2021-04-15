@@ -10,21 +10,32 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+
+/**
+ * Class AuthController
+ * Handles authentication requests
+ * @package App\Http\Controllers
+ */
 class AuthController extends Controller
 {
 
+    /**
+     * This method is used to authenticate user logging in with their email and password
+     * @param Request $request takes in the request from the backend with the values for email and password
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response with message, token and user object
+     */
     public function login(Request $request)
     {
         try {
             if (Auth::attempt($request->only('email', 'password'))) {
                 /** @var User $user */
-                    $user = Auth::user();
-                    $token = $user->createToken('app')->accessToken;
-                    return response([
-                        'message' => 'success',
-                        'token' => $token,
-                        'user' => $user
-                    ]);
+                $user = Auth::user();
+                $token = $user->createToken('app')->accessToken;
+                return response([
+                    'message' => 'success',
+                    'token' => $token,
+                    'user' => $user
+                ]);
             }
         } catch (\Exception $exception) {
             return response([
@@ -34,15 +45,22 @@ class AuthController extends Controller
         return response([
             'message' => 'Invalid username/password'
         ], 401);
-
     }
 
-
+    /**
+     * Method used to authenticate user
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
     public function user()
     {
         return Auth::user();
     }
 
+    /**
+     * Method used to register a new user into our database of users
+     * @param RegisterRequest $request takes in request from front end with user first name, last name, email and password
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function register(RegisterRequest $request)
     {
         try {
@@ -57,7 +75,7 @@ class AuthController extends Controller
                 'user' => $user
             ]);
 
-        }catch(\Exception $exception){
+        } catch (\Exception $exception) {
             return response([
                 'message' => $exception->getMessage()
             ], 400);
