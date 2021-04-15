@@ -120,6 +120,7 @@ class ProjectController extends Controller
         return DB::table('projects')
             ->select('Type_Of_Service', 'Date_Requested', 'Customer_Address')
             ->where('Date_Requested', '>=', $CurrDate)
+            ->orWhere('Completed', '=', 0)
             ->orderBy('Date_Requested')
             ->get();
     }
