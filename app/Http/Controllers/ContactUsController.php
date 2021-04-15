@@ -7,8 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Mail;
 
+/**
+ * Class ContactUsController
+ * Handles the "contact us" requests
+ * @package App\Http\Controllers
+ */
 class ContactUsController extends Controller
 {
+
+    /**
+     * Function to handle the contact us request from the customer and create the email
+     * @param ContactUsRequest $request takes in the customers name,email, and question
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response email has been sent response if the request is successful
+     */
     public function contactUs(ContactUsRequest $request){
         try{
             $name = $request->input('name');

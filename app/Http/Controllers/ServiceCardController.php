@@ -8,8 +8,19 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class ServiceCardController
+ * Handles the requests for creating,editing, and deleting the service cards
+ * @package App\Http\Controllers
+ */
 class ServiceCardController extends Controller
 {
+
+    /**
+     * Methodvvvvvvvvvvvvvvvvvvvplpvlvlpvvv
+     * @param ServiceCardRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function addServiceCard(ServiceCardRequest $request){
         try {
             $serviceCard = ServiceCards::create([
