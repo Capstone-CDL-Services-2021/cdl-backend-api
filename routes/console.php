@@ -1,5 +1,19 @@
 <?php
-
+/**
+ *******************************************
+ *                                         *
+ * Application: Back-end of CDL_Services  *
+ *                                         *
+ * Author: Alejandro Pena Canelon          *
+ *         Daniel Tran                     *
+ *         David Do                        *
+ *         Jimmy Lam                       *
+ *         Jordan Banh                     *
+ *         Justin Serrano                  *
+ *                                         *
+ * Date: April 16, 2021                    *
+ *                                         *
+ ******************************************* **/
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 

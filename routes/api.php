@@ -1,5 +1,19 @@
 <?php
-
+/**
+ *******************************************
+ *                                         *
+ * Application: Back-end of CDL_Services  *
+ *                                         *
+ * Author: Alejandro Pena Canelon          *
+ *         Daniel Tran                     *
+ *         David Do                        *
+ *         Jimmy Lam                       *
+ *         Jordan Banh                     *
+ *         Justin Serrano                  *
+ *                                         *
+ * Date: April 16, 2021                    *
+ *                                         *
+ ******************************************* **/
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, origin,Authorization");
 
