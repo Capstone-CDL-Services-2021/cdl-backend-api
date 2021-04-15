@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Schema;
 class CreateServiceCardsTable extends Migration
 {
 
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('service_cards', function (Blueprint $table) {
@@ -18,6 +23,11 @@ class CreateServiceCardsTable extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down(){
         Schema::drop('service_cards');
     }

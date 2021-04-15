@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTestimonialsTable extends Migration
 {
-
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('Testimonials', function (Blueprint $table) {
@@ -20,7 +24,11 @@ class CreateTestimonialsTable extends Migration
             $table->timestamps();
         });
     }
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::drop('Testimonials');
